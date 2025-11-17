@@ -8,6 +8,6 @@ import java.util.List;
 @AllArgsConstructor
 public class Grade {
     private Student student;
-    private Exam exam;
+    private double initialValue;
     private List<GradeHistory> gradeHistories;
 }

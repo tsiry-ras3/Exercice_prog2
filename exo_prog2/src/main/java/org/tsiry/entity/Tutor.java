@@ -1,12 +1,15 @@
-package org.tsiry;
+package org.tsiry.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.experimental.SuperBuilder;
+import lombok.Getter;
 
 import java.time.LocalDate;
-@Data
-@SuperBuilder
+
+@Getter
 public class Tutor extends Person{
     private String relationDescription;
+
+    public Tutor(int id, String name, String lastName, LocalDate birthDate, String email, String phone, String relationDescription) {
+        super(id, name, lastName, birthDate, email, phone);
+        this.relationDescription = relationDescription;
+    }
 }
