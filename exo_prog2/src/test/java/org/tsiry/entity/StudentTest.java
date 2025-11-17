@@ -34,8 +34,9 @@ class StudentTest {
         grade2 = new Grade(student, 18.0, new ArrayList<>(List.of(
                 new GradeHistory(Instant.parse("2025-09-01T08:00:00Z"), 20.0, "mistake")
         )));
-        exam1 = new Exam(1,"Prog1 midterm",null,2,Collections.singletonList(grade1));
-        exam2 = new Exam(2,"Prog1 ending",null,3,Collections.singletonList(grade2));
+
+        exam1 = new Exam(1,"Prog1 midterm", course,Instant.parse("2025-09-01T08:00:00Z"),2,Collections.singletonList(grade1));
+        exam2 = new Exam(2,"Prog1 ending", course, Instant.parse("2025-09-01T08:00:00Z"),3,Collections.singletonList(grade2));
         course = new Course(
                 1,
                 "PROG1",
@@ -59,13 +60,13 @@ class StudentTest {
 
     @Test
     void testGetCourseGrade_returnsNewValue() {
-        double result = student.getCourseGrade(course, Instant.parse("2025-09-01T10:00:00Z"));
+        double result = student.getCourseGrade(course, student, Instant.parse("2025-09-01T10:00:00Z"));
         assertEquals(16.8, result, 0.1);
     }
 
     @Test
     void testGetCourseGrade_returnsOldValue() {
-        double result = student.getCourseGrade(course, Instant.parse("2025-08-01T10:00:00Z"));
+        double result = student.getCourseGrade(course, student, Instant.parse("2025-08-01T10:00:00Z"));
         assertEquals(14.8, result, 0.1);
     }
 

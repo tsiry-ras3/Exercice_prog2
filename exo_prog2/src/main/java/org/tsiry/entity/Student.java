@@ -13,7 +13,7 @@ public class Student extends Person{
     private String group;
     private Tutor tutor ;
 
-    public Student(int id, String name, String lastName, LocalDate birthDate, String email, String phone, String group, Tutor tutor) {
+    public Student(int id, String name, String lastName, Instant birthDate, String email, String phone, String group, Tutor tutor) {
         super(id, name, lastName, birthDate, email, phone);
         this.group = group;
         this.tutor = tutor;
@@ -33,7 +33,7 @@ public class Student extends Person{
 
       GradeHistory latestHistory = null;
       for (GradeHistory history: studentGrade.getGradeHistories()){
-          if(history.getStart().isBefore(ChronoLocalDateTime.from(t))){
+          if(history.getStart().isBefore(Instant.from(t))){
               if(latestHistory == null || history.getStart().isAfter(latestHistory.getStart())){
                   latestHistory = history;
               }
